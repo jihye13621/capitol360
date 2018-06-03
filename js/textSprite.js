@@ -29,14 +29,15 @@
 
 	//api 
 
-	var getSynonyms = function() {
+	var getSynonyms = function(cb) {
 		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
 		$.getJSON("js/test.json", function(data) {
 
-			console.log(data);// intialize list
+			// console.log(data);// intialize list
 
 			var synonymOutPut = data.data.synonyms;
-			console.log('|' + data.data.synonyms + '|');
+			// console.log('|' + data.data.synonyms + '|');
+			cb(data.data.synonyms.join(', '))
 			return data.data.synonyms;
 			
 		});
@@ -129,27 +130,31 @@
 	// });
 
 	var spritesSynonyms = Array.from({length: 5}, function() {
-		var spriteSynonyms = new THREE.TextSprite({
-			textSize: getRandomTextSize(),
-			redrawInterval: redrawInterval,
-			material: {
-				color: getRandomColor(),
-			},
-			texture: {
-				text: getSynonyms(),
-				fontFamily: getRandomFontFamily(),
-				autoRedraw: autoRedraw,
-			},
+		getSynonyms(function(synonyms) {
+			console.log('|' + getRandomText() + '|');
+			console.log('|' + synonyms + '|');
+			var spriteSynonyms = new THREE.TextSprite({
+				textSize: getRandomTextSize(),
+				redrawInterval: redrawInterval,
+				material: {
+					color: getRandomColor(),
+				},
+				texture: {
+					text: synonyms,
+					fontFamily: getRandomFontFamily(),
+					autoRedraw: autoRedraw,
+				},
+			});
+			spriteSynonyms.position
+				.setX(Math.random())
+				.setY(Math.random())
+				.setZ(Math.random())
+				.subScalar(1/2)
+				.setLength(1 + Math.random())
+				.multiplyScalar(3*n);
+			scene.add(spriteSynonyms);
+			return spriteSynonyms;
 		});
-		spriteSynonyms.position
-			.setX(Math.random())
-			.setY(Math.random())
-			.setZ(Math.random())
-			.subScalar(1/2)
-			.setLength(1 + Math.random())
-			.multiplyScalar(3*n);
-		scene.add(spriteSynonyms);
-		return spriteSynonyms;
 	});
 
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
