@@ -42,14 +42,12 @@
 		});
 	}
 
-	var getPoems = function() {
+	var getPoems = function(cb) {
 		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
 		$.getJSON("js/test.json", function(data) {
-
-			var synonymOutPut = data.data.quotes;
-			console.log('|' + data.data.quotes + '|');
-			return data.data.quotes;
-			
+			var poemOutPut = data.data.poems;
+			console.log('|' + data.data.poems + '|');
+			cb(data.data.poems);
 		});
 	}
 
@@ -193,6 +191,36 @@
 			scene.add(spriteQuotes);
 			return spriteQuotes;
 		});
+	});
+
+	var spritesPoem = Array.from({length: 1}, function() {
+		getPoems(function(poems) {
+			console.log('|' + getRandomText() + '|');
+			console.log('|' + poems + '|');
+			console.log("Number", n);
+			var spritePoem = new THREE.TextSprite({
+				textSize: getRandomTextSize(),
+				redrawInterval: redrawInterval,
+				material: {
+					color: getRandomColor(),
+				},
+				texture: {
+					text: displayPoem(poems[Math.floor(Math.random() * poems.length)]),
+					fontFamily: getRandomFontFamily(),
+					autoRedraw: autoRedraw,
+				},
+			});
+			spritePoem.position
+				.setX(Math.random())
+				.setY(Math.random())
+				.setZ(Math.random())
+				.subScalar(1/2)
+				.setLength(1 + Math.random())
+				.multiplyScalar(3*n);
+			scene.add(spritePoem);
+			return spritePoem;
+		});
+
 	});
 
 
