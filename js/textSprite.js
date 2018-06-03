@@ -31,7 +31,7 @@
 		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
 		// $.getJSON("js/test.json", function(data) {
 			// console.log('|' + data.data.synonyms + '|');
-			cb(data.data.synonyms.join(', '));
+			cb(data.data.synonyms);
 			return data.data.synonyms;
 		});
 	}
@@ -40,7 +40,7 @@
 		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
 		// $.getJSON("js/test.json", function(data) {
 			// console.log('|' + data.data.quotes + '|');
-			cb(data.data.quotes.join(', '));
+			cb(data.data.quotes);
 			return data.data.quotes;
 		});
 	}
@@ -63,9 +63,9 @@
 	var getRhymes = function(cb) {
 		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
 		// $.getJSON("js/test.json", function(data) {
-			var poemOutPut = data.data.rhymes;
+			var rhymes = data.data.rhymes.map(x => x.word);
 			// console.log('|' + data.data.rhymes + '|');
-			cb(data.data.rhymes);
+			cb(rhymes);
 		});
 	}
 
@@ -144,10 +144,11 @@
 	// 	return sprite;
 	// });
 
-	var spritesSynonyms = Array.from({length: 1}, function() {
+	var spritesSynonyms = Array.from({length: 10}, function() {		// TODO: Add length constant
 		getSynonyms(function(synonyms) {
 			// console.log('|' + getRandomText() + '|');
 			// console.log('|' + synonyms + '|');
+			let index = Math.floor(Math.random() * synonyms.length);
 			var spriteSynonyms = new THREE.TextSprite({
 				textSize: getRandomTextSize(),
 				redrawInterval: redrawInterval,
@@ -155,7 +156,7 @@
 					color: getRandomColor(),
 				},
 				texture: {
-					text: synonyms,
+					text: synonyms[index],
 					fontFamily: getRandomFontFamily(),
 					autoRedraw: autoRedraw,
 				},
@@ -172,10 +173,11 @@
 		});
 	});
 
-	var spritesQuotes = Array.from({length: 1}, function() {
+	var spritesQuotes = Array.from({length: 10}, function() {		// TODO: Add length constant
 		getQuotes(function(quotes) {
 			// console.log('|' + getRandomText() + '|');
 			// console.log('|' + quotes + '|');
+			let index = Math.floor(Math.random() * quotes.length);
 			var spriteQuotes = new THREE.TextSprite({
 				textSize: getRandomTextSize(),
 				redrawInterval: redrawInterval,
@@ -183,7 +185,7 @@
 					color: getRandomColor(),
 				},
 				texture: {
-					text: quotes,
+					text: quotes[index],
 					fontFamily: getRandomFontFamily(),
 					autoRedraw: autoRedraw,
 				},
@@ -229,18 +231,19 @@
 		});
 	});
 
-	var spritesRhymes = Array.from({length: 2}, function() {
+	var spritesRhymes = Array.from({length: 10}, function() {		// TODO: Add length constant
 		getRhymes(function(rhymes) {
 			// console.log('|' + getRandomText() + '|');
 			// console.log('|' + JSON.stringify(rhymes, null, '\t') + '|');
+			let index = Math.floor(Math.random() * rhymes.length);
 			var spriteRhymes = new THREE.TextSprite({
-				textSize: 1/32,
+				textSize: 1/8,
 				redrawInterval: redrawInterval,
 				material: {
 					color: getRandomColor(),
 				},
 				texture: {
-					text: displayRhymes(rhymes),
+					text: rhymes[index],
 					fontFamily: getRandomFontFamily(),
 					autoRedraw: autoRedraw,
 				},

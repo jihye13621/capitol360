@@ -101,8 +101,8 @@
         </div>
         <div id="bottomInputDiv" class="inputTextBottom">
             <div class="pt-10 ">
-                <form>
-                    <input id="userInputText" style="z-index:9999" class="pt-10" type="text" name="inspiration">
+                <form id="formFocus">
+                    <input id="userInputText" style="z-index:9999" tabindex='1' class="pt-10" type="text" name="inspiration">
                     <!-- <br>
                     <button class="pt-10" onclick="myFunction()" type="submit"></button> -->
                 </form>
@@ -125,15 +125,31 @@
                     return false;
                 }
             });
-
+            
+            // array for user input
+            var myArr = [];
             var inspirationInput = 'love';
             function myFunction() {
                 var txt;
                 inspirationInput = $('#userInputText').val(); // TODO: Improve inspiration input
                 txt = "Your inspiration for the day is: " + inspirationInput + "!";
                 
-                document.getElementById("demo").innerHTML = txt;
+                // add variable input data to the array
+                myArr.push(inspirationInput);
+
+                var pval = "";
+                
+                for ( i = 0; i < myArr.length; i++ ) {
+                    pval = pval + myArr[i] + "<br/>";
+                }
+                
+
+                document.getElementById("demo").innerHTML = myArr;
             }
+
+            $('#formFocus').on('click', function (e) {
+                $("#formFocus").focus();
+            })
 
             // var inspirationInput;
             // function myFunction() {
@@ -196,8 +212,9 @@
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
-
-				document.addEventListener( 'mousedown', onDocumentMouseDown, true );
+                
+                
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 				document.addEventListener( 'wheel', onDocumentMouseWheel, false );
