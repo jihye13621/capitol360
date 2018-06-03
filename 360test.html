@@ -130,7 +130,7 @@
             
             // array for user input
             var myArr = [];
-            var inspirationInput = 'love';
+            var inspirationInput = 'cat';
             function myFunction() {
                 var txt;
                 inspirationInput = $('#userInputText').val(); // TODO: Improve inspiration input
@@ -165,8 +165,11 @@
             //     document.getElementById("demo").innerHTML = txt;
             // }
         </script>
+        <script src="js/textSprite.js"></script>
 
 		<script>
+
+            const IMG_NUM = 10;
 
 			var camera, scene, renderer;
             var cubeImages = [];
@@ -310,21 +313,24 @@
                 // var img = new Image();
                 // img.crossOrigin = "";
                 THREE.ImageUtils.crossOrigin = '';
-                // img.src = "https://images.unsplash.com/photo-1516956431828-b10b67f654d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1abfd58b74a89775f1c75a22cc8b1605&auto=format&fit=crop&w=718&q=80";
+                getImages(imgs => {
+                    // img.src = "https://images.unsplash.com/photo-1516956431828-b10b67f654d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1abfd58b74a89775f1c75a22cc8b1605&auto=format&fit=crop&w=718&q=80";
                 let img = "http://res.cloudinary.com/de-demo/image/fetch/c_thumb,h_200,r_max,w_200/f_png/https://images.unsplash.com/photo-1516956431828-b10b67f654d0";
 
-                for(var x=1;x<=32;x++){
-                    imageTexture[x] = THREE.ImageUtils.loadTexture( img );
-                    imageMaterial[x]= new THREE.MeshBasicMaterial( { 
-                        map: imageTexture[x],
-                        opacity:0.9
-                    });
+                 var vector = new THREE.Vector3();
+                
+                for(var x=0;x<=IMG_NUM;x++){
+                        imageTexture[x] = THREE.ImageUtils.loadTexture( imgs[x] );
+                        imageMaterial[x]= new THREE.MeshBasicMaterial( { 
+                            map: imageTexture[x],
+                            opacity:0.9
+                        });
                 }
                 imageMaterial.transparent=true;
-            
-                var vector = new THREE.Vector3();
-                
-                for ( var i = 1, l = 32; i <= l; i ++ ) { //array of images, same geometries, array of meshes (geometries and materials)
+
+               
+
+                for ( var i = 1, l = IMG_NUM; i <= l; i ++ ) { //array of images, same geometries, array of meshes (geometries and materials)
 
                     var phi = Math.acos( -1 + ( 2 * i ) / l );
                     var theta = Math.sqrt( l * Math.PI ) * phi;
@@ -341,6 +347,8 @@
                     objects.push( cubeImages[i] );
                     scene.add(cubeImages[i]);
                 }
+                });
+                
             }
 
 
@@ -450,7 +458,7 @@
 			}
 
         </script>
-        <script src="js/textSprite.js"></script>
+        
 
         
 

@@ -1,3 +1,4 @@
+getImages = null;
 (function() {
 
 	var getRandomText = function() {
@@ -74,14 +75,14 @@
 		return output;
 	}
 
-	// var getImages = function(cb) {
-	// 	$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
-	// 	// $.getJSON("js/test.json", function(data) {
-	// 		console.log('|' + data.data.images + '|');
-	// 		cb(data.data.images);
-	// 		return data.data.images;
-	// 	});
-	// }
+	getImages = function(cb) {
+		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+		// $.getJSON("js/test.json", function(data) {
+			console.log('|' + data.data.images.map(img => img.urls.regular) + '|');
+			cb(data.data.images.map(img => img.urls.regular));
+			return data.data.images.map(img => img.urls.regular);
+		});
+	}
 	
 
 	// API end
