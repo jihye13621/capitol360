@@ -25,8 +25,11 @@
 
 	// custom API
 	var getSynonyms = function(cb) {
-		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
-		$.getJSON("js/test.json", function(data) {
+		// setInterval(function() {
+		// 	console.log("Once ran");
+		// }, 1000);
+		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+		// $.getJSON("js/test.json", function(data) {
 			// console.log('|' + data.data.synonyms + '|');
 			cb(data.data.synonyms.join(', '));
 			return data.data.synonyms;
@@ -34,8 +37,8 @@
 	}
 
 	var getQuotes = function(cb) {
-		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
-		$.getJSON("js/test.json", function(data) {
+		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+		// $.getJSON("js/test.json", function(data) {
 			// console.log('|' + data.data.quotes + '|');
 			cb(data.data.quotes.join(', '));
 			return data.data.quotes;
@@ -43,8 +46,8 @@
 	}
 
 	var getPoems = function(cb) {
-		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
-		$.getJSON("js/test.json", function(data) {
+		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+		// $.getJSON("js/test.json", function(data) {
 			var poemOutPut = data.data.poems;
 			// console.log('|' + data.data.poems + '|');
 			cb(data.data.poems);
@@ -58,8 +61,8 @@
 	}
 
 	var getRhymes = function(cb) {
-		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
-		$.getJSON("js/test.json", function(data) {
+		$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+		// $.getJSON("js/test.json", function(data) {
 			var poemOutPut = data.data.rhymes;
 			// console.log('|' + data.data.rhymes + '|');
 			cb(data.data.rhymes);
@@ -228,8 +231,8 @@
 
 	var spritesRhymes = Array.from({length: 2}, function() {
 		getRhymes(function(rhymes) {
-			console.log('|' + getRandomText() + '|');
-			console.log('|' + JSON.stringify(rhymes, null, '\t') + '|');
+			// console.log('|' + getRandomText() + '|');
+			// console.log('|' + JSON.stringify(rhymes, null, '\t') + '|');
 			var spriteRhymes = new THREE.TextSprite({
 				textSize: 1/32,
 				redrawInterval: redrawInterval,
