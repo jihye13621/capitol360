@@ -3,7 +3,6 @@
 	var getRandomText = function() {
         //change into real data here
 		return chance
-		
 			.n(function() {
 				return chance
 				
@@ -17,41 +16,53 @@
 	// $(document).ready(function() {
 	// 	// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
 	// 	$.getJSON("js/test.json", function(data) {
-
-	// 		console.log(data);// intialize list
-
+	// 		console.log(data);
 	// 		var synonymOutPut = data.synonyms;
 	// 		console.log(data.synonyms);
 	// 		return synonymOutPut;
-			
 	// 	});
 	// });
 
-	//api 
-
+	// custom API
 	var getSynonyms = function(cb) {
 		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
 		$.getJSON("js/test.json", function(data) {
-
-			// console.log(data);// intialize list
-
-			var synonymOutPut = data.data.synonyms;
 			// console.log('|' + data.data.synonyms + '|');
-			cb(data.data.synonyms.join(', '))
+			cb(data.data.synonyms.join(', '));
 			return data.data.synonyms;
+		});
+	}
+
+	var getQuotes = function(cb) {
+		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
+		$.getJSON("js/test.json", function(data) {
+			console.log('|' + data.data.quotes + '|');
+			cb(data.data.quotes.join(', '));
+			return data.data.quotes;
+		});
+	}
+
+	var getPoems = function() {
+		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
+		$.getJSON("js/test.json", function(data) {
+
+			var synonymOutPut = data.data.quotes;
+			console.log('|' + data.data.quotes + '|');
+			return data.data.quotes;
 			
 		});
 	}
 
-	// var getPoems = function() {
-	// 	data.synonyms
-	// 	return 
-	// }
+	function displayPoem(poem) {
+		let output = poem.lines.join('\n');
+		output += '\n—' + poem.author;
+		return output;
+	}
 
-	// var getQuotes = function() {
-	// 	data.quotes
-	// 	return 
-	// }
+	function displayRhymes(rhymes) {
+		let output = rhymes.map(x => x.word).join(', ');
+		return output;
+	}
 
 	// var getImages = function() {
 	// 	data.images
@@ -71,7 +82,6 @@
 
 			'Arial, Helvetica, sans-serif',
 			'"Arial Black", Gadget, sans-serif',
-			'"Comic Sans MS", cursive, sans-serif',
 			'Impact, Charcoal, sans-serif',
 			'"Lucida Sans Unicode", "Lucida Grande", sans-serif',
 			'Tahoma, Geneva, sans-serif',
@@ -129,7 +139,7 @@
 	// 	return sprite;
 	// });
 
-	var spritesSynonyms = Array.from({length: 5}, function() {
+	var spritesSynonyms = Array.from({length: 3}, function() {
 		getSynonyms(function(synonyms) {
 			console.log('|' + getRandomText() + '|');
 			console.log('|' + synonyms + '|');
@@ -156,6 +166,37 @@
 			return spriteSynonyms;
 		});
 	});
+
+	var spritesQuotes = Array.from({length: 3}, function() {
+		getQuotes(function(quotes) {
+			console.log('|' + getRandomText() + '|');
+			console.log('|' + quotes + '|');
+			var spriteQuotes = new THREE.TextSprite({
+				textSize: getRandomTextSize(),
+				redrawInterval: redrawInterval,
+				material: {
+					color: getRandomColor(),
+				},
+				texture: {
+					text: quotes,
+					fontFamily: getRandomFontFamily(),
+					autoRedraw: autoRedraw,
+				},
+			});
+			spriteQuotes.position
+				.setX(Math.random())
+				.setY(Math.random())
+				.setZ(Math.random())
+				.subScalar(1/2)
+				.setLength(1 + Math.random())
+				.multiplyScalar(3*n);
+			scene.add(spriteQuotes);
+			return spriteQuotes;
+		});
+	});
+
+
+	
 
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 	controls.maxDistance = camera.far/2;
