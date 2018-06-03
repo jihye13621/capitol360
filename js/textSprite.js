@@ -74,10 +74,17 @@
 		return output;
 	}
 
-	// var getImages = function() {
-	// 	data.images
-	// 	return 
+	// var getImages = function(cb) {
+	// 	$.getJSON("https://10ee9d2c.ngrok.io/lookup/" + inspirationInput, function(data) { 
+	// 	// $.getJSON("js/test.json", function(data) {
+	// 		console.log('|' + data.data.images + '|');
+	// 		cb(data.data.images);
+	// 		return data.data.images;
+	// 	});
 	// }
+	
+
+	// API end
 
 	var getRandomFontFamily = function() {
 		return chance.pickone([
@@ -101,6 +108,18 @@
 	var getRandomColor = function() {
 		return chance.color({format: 'hex'});
 	};
+
+	var getSoundColor = function() {
+		return new THREE.Color("rgb(" + Math.floor(Math.random() * 220 + 35) + ", 0, 0)");
+	}
+
+	var getMeaningColor = function() {
+		return new THREE.Color("rgb(0, " + Math.floor(Math.random() * 220 + 35) + ", 0)");
+	}
+
+	var getPieceColor = function() {
+		return new THREE.Color("rgb(0, 0, " + Math.floor(Math.random() * 220 + 35) + ")");
+	}
 
 	var n = 1;
 
@@ -153,7 +172,7 @@
 				textSize: getRandomTextSize(),
 				redrawInterval: redrawInterval,
 				material: {
-					color: getRandomColor(),
+					color: getMeaningColor(),
 				},
 				texture: {
 					text: synonyms[index],
@@ -182,7 +201,7 @@
 				textSize: getRandomTextSize(),
 				redrawInterval: redrawInterval,
 				material: {
-					color: getRandomColor(),
+					color: getPieceColor(),
 				},
 				texture: {
 					text: quotes[index],
@@ -211,7 +230,7 @@
 				textSize: 1/16,
 				redrawInterval: redrawInterval,
 				material: {
-					color: getRandomColor(),
+					color: getPieceColor(),
 				},
 				texture: {
 					text: displayPoem(poems[Math.floor(Math.random() * poems.length)]),
@@ -235,12 +254,12 @@
 		getRhymes(function(rhymes) {
 			// console.log('|' + getRandomText() + '|');
 			// console.log('|' + JSON.stringify(rhymes, null, '\t') + '|');
-			let index = Math.floor(Math.random() * rhymes.length);
+			let index = Math.floor(Math.sqrt(Math.random() * rhymes.length));
 			var spriteRhymes = new THREE.TextSprite({
 				textSize: 1/8,
 				redrawInterval: redrawInterval,
 				material: {
-					color: getRandomColor(),
+					color: getSoundColor(),
 				},
 				texture: {
 					text: rhymes[index],
