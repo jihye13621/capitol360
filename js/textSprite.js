@@ -3,13 +3,64 @@
 	var getRandomText = function() {
         //change into real data here
 		return chance
+		
 			.n(function() {
 				return chance
+				
 					.n(chance.word, chance.weighted([1, 2, 3], [2, 3, 1]))
 					.join(' ');
 			}, chance.weighted([1, 2, 3], [2, 3, 1]))
 			.join('\n');
 	};
+
+	/* get treehouse profile info via JSON */
+	// $(document).ready(function() {
+	// 	// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
+	// 	$.getJSON("js/test.json", function(data) {
+
+	// 		console.log(data);// intialize list
+
+	// 		var synonymOutPut = data.synonyms;
+	// 		console.log(data.synonyms);
+	// 		return synonymOutPut;
+			
+	// 	});
+	// });
+
+	//api 
+
+	var getSynonyms = function() {
+		// $.getJSON("https://10ee9d2c.ngrok.io/lookup/sad", function(data) { 
+		$.getJSON("js/test.json", function(data) {
+
+			console.log(data);// intialize list
+
+			var synonymOutPut = data.data.synonyms;
+			console.log('|' + data.data.synonyms + '|');
+			return data.data.synonyms;
+			
+		});
+	}
+
+	// var getPoems = function() {
+	// 	data.synonyms
+	// 	return 
+	// }
+
+	// var getQuotes = function() {
+	// 	data.quotes
+	// 	return 
+	// }
+
+	// var getImages = function() {
+	// 	data.images
+	// 	return 
+	// }
+
+	// var getRhymes = function() {
+	// 	data.rhymes
+	// 	return 
+	// }
 
 	var getRandomFontFamily = function() {
 		return chance.pickone([
@@ -53,28 +104,52 @@
 	var redrawInterval = 1;
 	var autoRedraw = true;
 
-	var sprites = Array.from({length: 88}, function() {
-		var sprite = new THREE.TextSprite({
+	// var sprites = Array.from({length: 88}, function() {
+	// 	var sprite = new THREE.TextSprite({
+	// 		textSize: getRandomTextSize(),
+	// 		redrawInterval: redrawInterval,
+	// 		material: {
+	// 			color: getRandomColor(),
+	// 		},
+	// 		texture: {
+	// 			text: getRandomText(),
+	// 			fontFamily: getRandomFontFamily(),
+	// 			autoRedraw: autoRedraw,
+	// 		},
+	// 	});
+	// 	sprite.position
+	// 		.setX(Math.random())
+	// 		.setY(Math.random())
+	// 		.setZ(Math.random())
+	// 		.subScalar(1/2)
+	// 		.setLength(1 + Math.random())
+	// 		.multiplyScalar(3*n);
+	// 	scene.add(sprite);
+	// 	return sprite;
+	// });
+
+	var spritesSynonyms = Array.from({length: 5}, function() {
+		var spriteSynonyms = new THREE.TextSprite({
 			textSize: getRandomTextSize(),
 			redrawInterval: redrawInterval,
 			material: {
 				color: getRandomColor(),
 			},
 			texture: {
-				text: getRandomText(),
+				text: getSynonyms(),
 				fontFamily: getRandomFontFamily(),
 				autoRedraw: autoRedraw,
 			},
 		});
-		sprite.position
+		spriteSynonyms.position
 			.setX(Math.random())
 			.setY(Math.random())
 			.setZ(Math.random())
 			.subScalar(1/2)
 			.setLength(1 + Math.random())
 			.multiplyScalar(3*n);
-		scene.add(sprite);
-		return sprite;
+		scene.add(spriteSynonyms);
+		return spriteSynonyms;
 	});
 
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);

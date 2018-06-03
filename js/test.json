@@ -1,0 +1,631 @@
+{  
+   "status":true,
+   "data":{  
+      "synonyms":[  
+         "deplorable",
+         "distressing",
+         "lamentable",
+         "pitiful",
+         "sorry"
+      ],
+      "quotes":[  
+         "love is blind",
+         "I love you",
+         "It is my lady. Oh, it is my love"
+      ],
+      "images":[  
+         "https://images.unsplash.com/photo-1487235829740-e0ac5a286e1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=310f7bfbbc76086f8259a5d197fcffb4&auto=format&fit=crop&w=1648&q=80",
+         "https://images.unsplash.com/photo-1487235829740-e0ac5a286e1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=310f7bfbbc76086f8259a5d197fcffb4&auto=format&fit=crop&w=1648&q=80",
+         "https://images.unsplash.com/photo-1487235829740-e0ac5a286e1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=310f7bfbbc76086f8259a5d197fcffb4&auto=format&fit=crop&w=1648&q=80"
+      ],
+      "rhymes":[  
+         {  
+            "word":"pad",
+            "score":2642,
+            "numSyllables":1
+         },
+         {  
+            "word":"bad",
+            "score":2270,
+            "numSyllables":1
+         },
+         {  
+            "word":"ad",
+            "score":1623,
+            "numSyllables":1
+         },
+         {  
+            "word":"add",
+            "score":1424,
+            "numSyllables":1
+         },
+         {  
+            "word":"fad",
+            "score":1422,
+            "numSyllables":1
+         },
+         {  
+            "word":"mad",
+            "score":1416,
+            "numSyllables":1
+         },
+         {  
+            "word":"cad",
+            "score":1315,
+            "numSyllables":1
+         },
+         {  
+            "word":"glad",
+            "score":1171,
+            "numSyllables":1
+         },
+         {  
+            "word":"clad",
+            "score":1138,
+            "numSyllables":1
+         },
+         {  
+            "word":"rad",
+            "score":1079,
+            "numSyllables":1
+         },
+         {  
+            "word":"chad",
+            "score":1043,
+            "numSyllables":1
+         },
+         {  
+            "word":"comrade",
+            "score":1034,
+            "numSyllables":2
+         },
+         {  
+            "word":"gad",
+            "score":992,
+            "numSyllables":1
+         },
+         {  
+            "word":"plaid",
+            "score":984,
+            "numSyllables":1
+         },
+         {  
+            "word":"lad",
+            "score":980,
+            "numSyllables":1
+         },
+         {  
+            "word":"nomad",
+            "score":946,
+            "numSyllables":2
+         },
+         {  
+            "word":"triad",
+            "score":927,
+            "numSyllables":2
+         },
+         {  
+            "word":"dyad",
+            "score":871,
+            "numSyllables":2
+         },
+         {  
+            "word":"tad",
+            "score":857,
+            "numSyllables":1
+         },
+         {  
+            "word":"dad",
+            "score":846,
+            "numSyllables":1
+         },
+         {  
+            "word":"scad",
+            "score":756,
+            "numSyllables":1
+         },
+         {  
+            "word":"had",
+            "score":742,
+            "numSyllables":1
+         },
+         {  
+            "word":"brad",
+            "score":710,
+            "numSyllables":1
+         },
+         {  
+            "word":"shad",
+            "score":661,
+            "numSyllables":1
+         },
+         {  
+            "word":"ironclad",
+            "score":594,
+            "numSyllables":3
+         },
+         {  
+            "word":"grad",
+            "score":400,
+            "numSyllables":1
+         },
+         {  
+            "word":"olympiad",
+            "score":304,
+            "numSyllables":4
+         },
+         {  
+            "word":"nad",
+            "score":294,
+            "numSyllables":1
+         },
+         {  
+            "word":"doodad",
+            "score":273,
+            "numSyllables":2
+         },
+         {  
+            "word":"keypad",
+            "score":267,
+            "numSyllables":2
+         },
+         {  
+            "word":"strad",
+            "score":255,
+            "numSyllables":1
+         },
+         {  
+            "word":"thad",
+            "score":253,
+            "numSyllables":1
+         },
+         {  
+            "word":"vlad",
+            "score":241,
+            "numSyllables":1
+         },
+         {  
+            "word":"galahad",
+            "score":239,
+            "numSyllables":3
+         },
+         {  
+            "word":"grandad",
+            "score":237,
+            "numSyllables":2
+         },
+         {  
+            "word":"ladd",
+            "score":236,
+            "numSyllables":1
+         },
+         {  
+            "word":"forbad",
+            "score":207,
+            "numSyllables":2
+         },
+         {  
+            "word":"ecad",
+            "score":197,
+            "numSyllables":2
+         },
+         {  
+            "word":"trinidad",
+            "score":197,
+            "numSyllables":3
+         },
+         {  
+            "word":"ciudad",
+            "score":189,
+            "numSyllables":3
+         },
+         {  
+            "word":"amistad",
+            "score":184,
+            "numSyllables":3
+         },
+         {  
+            "word":"dradde",
+            "score":170,
+            "numSyllables":1
+         },
+         {  
+            "word":"riyadh",
+            "score":165,
+            "numSyllables":2
+         },
+         {  
+            "word":"sociedad",
+            "score":165,
+            "numSyllables":3
+         },
+         {  
+            "word":"mossad",
+            "score":164,
+            "numSyllables":2
+         },
+         {  
+            "word":"hyderabad",
+            "score":163,
+            "numSyllables":4
+         },
+         {  
+            "word":"volgograd",
+            "score":157,
+            "numSyllables":3
+         },
+         {  
+            "word":"sinbad",
+            "score":154,
+            "numSyllables":2
+         },
+         {  
+            "word":"ydrad",
+            "score":154,
+            "numSyllables":1
+         },
+         {  
+            "word":"tchad",
+            "score":145,
+            "numSyllables":1
+         },
+         {  
+            "word":"soledad",
+            "score":143,
+            "numSyllables":2
+         },
+         {  
+            "word":"leningrad",
+            "score":139,
+            "numSyllables":3
+         },
+         {  
+            "word":"undergrad",
+            "score":138,
+            "numSyllables":3
+         },
+         {  
+            "word":"lily pad",
+            "score":125,
+            "numSyllables":3
+         },
+         {  
+            "word":"stalingrad",
+            "score":123,
+            "numSyllables":3
+         },
+         {  
+            "word":"launch pad",
+            "score":113,
+            "numSyllables":2
+         },
+         {  
+            "word":"kaliningrad",
+            "score":112,
+            "numSyllables":4
+         },
+         {  
+            "word":"riyad",
+            "score":100,
+            "numSyllables":2
+         },
+         {  
+            "word":"unctad",
+            "score":97,
+            "numSyllables":2
+         },
+         {  
+            "word":"gadd",
+            "score":96,
+            "numSyllables":1
+         },
+         {  
+            "word":"madd",
+            "score":85,
+            "numSyllables":1
+         },
+         {  
+            "word":"ladde",
+            "score":75,
+            "numSyllables":1
+         },
+         {  
+            "word":"not bad",
+            "score":71,
+            "numSyllables":2
+         },
+         {  
+            "word":"too bad",
+            "score":70,
+            "numSyllables":2
+         },
+         {  
+            "word":"hadd",
+            "score":68,
+            "numSyllables":1
+         },
+         {  
+            "word":"scantily clad",
+            "score":66,
+            "numSyllables":4
+         },
+         {  
+            "word":"go bad",
+            "score":60,
+            "numSyllables":2
+         },
+         {  
+            "word":"mirad",
+            "score":59,
+            "numSyllables":2
+         },
+         {  
+            "word":"newspaper ad",
+            "score":56,
+            "numSyllables":4
+         },
+         {  
+            "word":"visegrad",
+            "score":56,
+            "numSyllables":3
+         },
+         {  
+            "word":"want ad",
+            "score":53,
+            "numSyllables":2
+         },
+         {  
+            "word":"like mad",
+            "score":51,
+            "numSyllables":2
+         },
+         {  
+            "word":"sketch pad",
+            "score":51,
+            "numSyllables":2
+         },
+         {  
+            "word":"knee pad",
+            "score":48,
+            "numSyllables":2
+         },
+         {  
+            "word":"scratch pad",
+            "score":48,
+            "numSyllables":2
+         },
+         {  
+            "word":"flad",
+            "score":44,
+            "numSyllables":1
+         },
+         {  
+            "word":"tadd",
+            "score":44,
+            "numSyllables":1
+         },
+         {  
+            "word":"sir galahad",
+            "score":42,
+            "numSyllables":4
+         },
+         {  
+            "word":"amstrad",
+            "score":41,
+            "numSyllables":2
+         },
+         {  
+            "word":"caridad",
+            "score":41,
+            "numSyllables":3
+         },
+         {  
+            "word":"deadbeat dad",
+            "score":41,
+            "numSyllables":3
+         },
+         {  
+            "word":"halmstad",
+            "score":39,
+            "numSyllables":2
+         },
+         {  
+            "word":"scouring pad",
+            "score":38,
+            "numSyllables":4
+         },
+         {  
+            "word":"elbow pad",
+            "score":36,
+            "numSyllables":3
+         },
+         {  
+            "word":"launching pad",
+            "score":36,
+            "numSyllables":3
+         },
+         {  
+            "word":"shadd",
+            "score":36,
+            "numSyllables":1
+         },
+         {  
+            "word":"mattress pad",
+            "score":34,
+            "numSyllables":3
+         },
+         {  
+            "word":"stamp pad",
+            "score":34,
+            "numSyllables":2
+         },
+         {  
+            "word":"writing pad",
+            "score":34,
+            "numSyllables":3
+         },
+         {  
+            "word":"carpet pad",
+            "score":31,
+            "numSyllables":3
+         },
+         {  
+            "word":"hot pad",
+            "score":30,
+            "numSyllables":2
+         },
+         {  
+            "word":"thinkpad",
+            "score":30,
+            "numSyllables":2
+         },
+         {  
+            "word":"arm pad",
+            "score":28,
+            "numSyllables":2
+         },
+         {  
+            "word":"mouse pad",
+            "score":28,
+            "numSyllables":2
+         },
+         {  
+            "word":"schad",
+            "score":28,
+            "numSyllables":1
+         },
+         {  
+            "word":"cleaning pad",
+            "score":27,
+            "numSyllables":3
+         },
+         {  
+            "word":"shoulder pad",
+            "score":26,
+            "numSyllables":3
+         },
+         {  
+            "word":"heating pad",
+            "score":25,
+            "numSyllables":3
+         },
+         {  
+            "word":"raving mad",
+            "score":23,
+            "numSyllables":3
+         },
+         {  
+            "word":"body pad",
+            "score":22,
+            "numSyllables":3
+         }
+      ],
+      "poems":[  
+         {  
+            "title":"Sonnet XLV: Muses, Which Sadly Sit",
+            "author":"Michael Drayton",
+            "lines":[  
+               "Muses, which sadly sit about my chair,",
+               "Drown'd in the tears extorted by my lines,",
+               "With heavy sighs whilst thus I break the air,",
+               "Painting my passions in these sad designs,",
+               "Since she disdains to bless my happy verse,",
+               "The strong-built trophies to her living fame,",
+               "Ever henceforth my bosom be your hearse,",
+               "Wherein the world shall now entomb her name.",
+               "Enclose my music, you poor senseless walls,",
+               "Since she is deaf and will not hear my moans,",
+               "Soften yourselves with every tear that falls,",
+               "Whilst I, like Orpheus, sing to trees and stones,",
+               "Which with my plaint seem yet with pity mov'd,",
+               "Kinder than she whom I so long have lov'd."
+            ],
+            "linecount":14
+         },
+         {  
+            "title":"Sonnet XXXI: With How Sad Steps, O Moon",
+            "author":"Sir Philip Sidney",
+            "lines":[  
+               "With how sad steps, O Moon, thou climb'st the skies!",
+               "How silently, and with how wan a face!",
+               "What, may it be that even in heav'nly place",
+               "That busy archer his sharp arrows tries!",
+               "Sure, if that long-with love-acquainted eyes",
+               "Can judge of love, thou feel'st a lover's case,",
+               "I read it in thy looks; thy languish'd grace",
+               "To me, that feel the like, thy state descries.",
+               "Then, ev'n of fellowship, O Moon, tell me,",
+               "Is constant love deem'd there but want of wit?",
+               "Are beauties there as proud as here they be?",
+               "Do they above love to be lov'd, and yet",
+               "Those lovers scorn whom that love doth possess?",
+               "Do they call virtue there ungratefulness?"
+            ],
+            "linecount":14
+         },
+         {  
+            "title":"To The Sad Moon",
+            "author":"Sir Philip Sidney",
+            "lines":[  
+               "With how sad steps, O Moon, thou climb'st the skies!",
+               "How silently, and with how wan a face!",
+               "What! May it be that even in heavenly place",
+               "That busy archer his sharp arrows tries?",
+               "Sure, if that long-with-love-acquainted eyes",
+               "Can judge of love, thou feel'st a lover's case:",
+               "I read it in thy looks; thy languished grace",
+               "To me, that feel the like, thy state descries.",
+               "Then, even of fellowship, O Moon, tell me,",
+               "Is constant love deemed there but want of wit?",
+               "Are beauties there as proud as here they be?",
+               "Do they above love to be loved, and yet",
+               "Those lovers scorn whom that love doth possess?",
+               "Do they call 'virtue' there— ungratefulness?"
+            ],
+            "linecount":14
+         },
+         {  
+            "title":"Sonnet III: With how sad steps",
+            "author":"Sir Philip Sidney",
+            "lines":[  
+               "With how sad steps, O moon, thou climb'st the skies!",
+               "How silently, and with how wan a face!",
+               "What! may it be that even in heavenly place",
+               "That busy archer his sharp arrows tries?",
+               "Sure, if that long-with-love-acquainted eyes",
+               "Can judge of love, thou feel'st a lover's case:",
+               "I read it in thy looks; thy languished grace",
+               "To me, that feel the like, thy state descries.",
+               "Then, even of fellowship, O Moon, tell me,",
+               "Is constant love deemed there but want of wit?",
+               "Are beauties there as proud as here they be?",
+               "Do they above love to be loved, and yet",
+               "Those lovers scorn whoom that love doth possess?",
+               "Do they call 'virtue' there - ungratefulness?"
+            ],
+            "linecount":14
+         },
+         {  
+            "title":"Sonnet 8: Music to hear, why hear'st thou music sadly?",
+            "author":"William Shakespeare",
+            "lines":[  
+               "Music to hear, why hear'st thou music sadly?",
+               "Sweets with sweets war not, joy delights in joy:",
+               "Why lov'st thou that which thou receiv'st not gladly,",
+               "Or else receiv'st with pleasure thine annoy?",
+               "If the true concord of well-tuned sounds,",
+               "By unions married, do offend thine ear,",
+               "They do but sweetly chide thee, who confounds",
+               "In singleness the parts that thou shouldst bear.",
+               "Mark how one string, sweet husband to another,",
+               "Strikes each in each by mutual ordering;",
+               "Resembling sire and child and happy mother,",
+               "Who, all in one, one pleasing note do sing:",
+               "  Whose speechless song being many, seeming one,",
+               "  Sings this to thee: 'Thou single wilt prove none.'"
+            ],
+            "linecount":"14"
+         }
+      ]
+   }
+}
