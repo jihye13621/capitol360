@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Creartist</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px; width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family:Montserrat, sans-serif;
+				font-size:13px;
+				font-weight: bold;
+				text-align:center;
+			}
+
+			a {
+				color: #ffffff;
+			}
+            .pt-10{
+                margin-top:10px;
+            }
+            
+            .button {
+            display: inline-block;
+            padding: 15px;
+            margin-right: 5px;
+            height: 50px;
+            min-width: 100px;
+            background: #348AA7;
+            border: none;
+            outline: none;
+            color: white;
+            font-family: inherit;
+            font-weight: 400;
+            font-size: 20px;
+            border-radius: 3px;
+            box-shadow: 0 5px 0px #348aa7;
+            border-bottom: 2px solid #30809b;
+            }
+            .button:hover {
+            background: #2e7a94;
+            box-shadow: 0 4px 1px #2e7a94;
+            border-bottom: 2px solid #2a7088;
+            transition: all 0.1s ease-in;
+            }
+            .button:active {
+            transform: translateY(4px);
+            border-bottom-width: 2px;
+            box-shadow: none;
+            }
+		</style>
+	</head>
+	<body>
+
+		<div id="container"></div>
+		<div id="info">
+            <a href="#"><h1 class="pt-10">CREARTIST</h1></a>
+            <h2 style="margin:0">Creator inspiration portal for content creators</h2>
+            <button class="button pt-10" onclick="myFunction()">Your Inspiration</button>
+            <button class="button pt-10" onclick="changePerspective()">Toggle</button>
+            <p id="demo"></p>
+            <!-- <div class="pt-10">
+                <form action="/example.php">
+                    Your inspiration for the day:<br>
+                    <input style="z-index:9999" class="pt-10" type="text" name="inspiration">
+                    <br>
+                    <input class="pt-10" type="submit">
+                </form>
+            </div> -->
+		</div>
+
+        <script src="https://threejs.org/build/three.js"></script>
+        <script src="https://unpkg.com/three.texttexture"></script>
+        <script src="https://seregpie.github.io/THREE.TextSprite/THREE.TextSprite.js"></script>
+        <script src="https://cdn.rawgit.com/mrdoob/three.js/dev/examples/js/controls/OrbitControls.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.1/dat.gui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+            
+            function myFunction() {
+                var txt;
+                var inspirationInput = prompt("Your inspiration for the day:", "Staycation");
+                if (inspirationInput == null || inspirationInput == "") {
+                    txt = "You have cancelled.";
+                } else {
+                    txt = "Your inspiration for the day is: " + inspirationInput + "!";
+                }
+                document.getElementById("demo").innerHTML = txt;
+            }
+        </script>
+
+		<script>
+
+			var camera, scene, renderer;
+            var cubeImages = [];
+            var mesh1 = [];
+            var objects = [];
+
+			var isUserInteracting = false,
+			onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+			lon = 0, onMouseDownLon = 0,
+			lat = 0, onMouseDownLat = 0,
+			phi = 0, theta = 0;
+
+			init();
+			animate();
+
+			function init() {
+
+				var container, mesh;
+
+				container = document.getElementById( 'container' );
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+				camera.target = new THREE.Vector3( 0, 0, 0 );
+
+				scene = new THREE.Scene();
+
+				var geometry = new THREE.SphereBufferGeometry( 500, 60, 40 );
+				// invert the geometry on the x-axis so that all of the faces point inward
+				geometry.scale( - 1, 1, 1 );
+
+				var material = new THREE.MeshBasicMaterial( {
+					map: new THREE.TextureLoader().load( 'images/360.jpg' )
+				} );
+
+				mesh = new THREE.Mesh( geometry, material );
+
+				scene.add( mesh );
+
+                
+                generateImages();
+                words();
+                // setTimeout(function(){words();},1000);
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
+
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+				document.addEventListener( 'wheel', onDocumentMouseWheel, false );
+
+				//
+
+				document.addEventListener( 'dragover', function ( event ) {
+
+					event.preventDefault();
+					event.dataTransfer.dropEffect = 'copy';
+
+				}, false );
+
+				document.addEventListener( 'dragenter', function ( event ) {
+
+					document.body.style.opacity = 0.5;
+
+				}, false );
+
+				document.addEventListener( 'dragleave', function ( event ) {
+
+					document.body.style.opacity = 1;
+
+				}, false );
+
+				document.addEventListener( 'drop', function ( event ) {
+
+					event.preventDefault();
+
+					var reader = new FileReader();
+					reader.addEventListener( 'load', function ( event ) {
+
+						material.map.image.src = event.target.result;
+						material.map.needsUpdate = true;
+
+					}, false );
+					reader.readAsDataURL( event.dataTransfer.files[ 0 ] );
+
+					document.body.style.opacity = 1;
+
+				}, false );
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+            
+            function generateImages(){
+                //array of iphone images "image1.JPG, image2.JPG, image3.JPG... etc..."
+                //resize images to a width of 1000 for the page to load faster
+                var imageTexture=[]; 
+                var imageMaterial =[];
+                for(var x=1;x<=32;x++){
+                    imageTexture[x] = THREE.ImageUtils.loadTexture( 'images/testImages/image'+x+'.JPG' );
+                    imageMaterial[x]= new THREE.MeshBasicMaterial( { 
+                        map: imageTexture[x],
+                        opacity:0.9
+                    });
+                }
+                imageMaterial.transparent=true;
+            
+                var vector = new THREE.Vector3();
+                
+                for ( var i = 1, l = 32; i <= l; i ++ ) { //array of images, same geometries, array of meshes (geometries and materials)
+
+                    var phi = Math.acos( -1 + ( 2 * i ) / l );
+                    var theta = Math.sqrt( l * Math.PI ) * phi;
+
+                    var cubegeometry = new THREE.CubeGeometry(60, 44, 1, 1);
+                    
+                    cubeImages[i] = new THREE.Mesh(cubegeometry,imageMaterial[i]);
+                    cubeImages[i].doubleSided = true;
+                    cubeImages[i].position.x = 130 * Math.cos( theta ) * Math.sin( phi );
+                    cubeImages[i].position.y = 130 * Math.sin( theta ) * Math.sin( phi );
+                    cubeImages[i].position.z = 130 * Math.cos( phi );
+                    vector.copy( cubeImages[i].position ).multiplyScalar( 2 );
+                    cubeImages[i].lookAt( vector );
+                    objects.push( cubeImages[i] );
+                    scene.add(cubeImages[i]);
+                }
+            }
+
+            function words(){
+                let sprite = new THREE.TextSprite({
+                textSize: 10,
+                redrawInterval: 250,
+                texture: {
+                    text: 'Heartbreak',
+                    fontFamily: 'Arial, Helvetica, sans-serif',
+                },
+                material: {
+                    color: 0xffbbff,
+                    fog: true,
+                },
+                });
+                scene.add(sprite);
+            }
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function onDocumentMouseDown( event ) {
+
+				event.preventDefault();
+
+				isUserInteracting = true;
+
+				onMouseDownMouseX = event.clientX;
+				onMouseDownMouseY = event.clientY;
+
+				onMouseDownLon = lon;
+				onMouseDownLat = lat;
+
+			}
+
+			function onDocumentMouseMove( event ) {
+
+				if ( isUserInteracting === true ) {
+
+					lon = ( onMouseDownMouseX - event.clientX ) * 0.1 + onMouseDownLon;
+					lat = ( event.clientY - onMouseDownMouseY ) * 0.1 + onMouseDownLat;
+
+				}
+
+			}
+
+			function onDocumentMouseUp( event ) {
+
+				isUserInteracting = false;
+
+			}
+
+			function onDocumentMouseWheel( event ) {
+
+				var fov = camera.fov + event.deltaY * 0.05;
+
+				camera.fov = THREE.Math.clamp( fov, 10, 75 );
+
+				camera.updateProjectionMatrix();
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+				update();
+
+            }
+            function changePerspective (){
+                camera.position.copy( camera.target ).negate();
+                camera.lookAt( camera.target );
+            }
+
+			function update() {
+
+				if ( isUserInteracting === false ) {
+                    
+                    // changes speed of rotating camera
+					lon += 0.07;
+
+				}
+
+				lat = Math.max( - 85, Math.min( 85, lat ) );
+				phi = THREE.Math.degToRad( 90 - lat );
+				theta = THREE.Math.degToRad( lon );
+
+				camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+				camera.target.y = 500 * Math.cos( phi );
+				camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+				camera.lookAt( camera.target );
+
+				
+				// distortion
+				//camera.position.copy( camera.target ).negate();
+				
+
+				renderer.render( scene, camera );
+
+			}
+
+        </script>
+        <script src="js/textSprite.js"></script>
+	</body>
+</html>
