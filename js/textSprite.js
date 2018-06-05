@@ -165,7 +165,7 @@ getImages = null;
 		// 	return sprite;
 		// });
 	
-		let spritesSynonyms = Array.from({length: 10}, function() {		// TODO: Add length constant
+		let spritesSynonyms = Array.from({length: 60}, function() {		// TODO: Add length constant
 			getSynonyms(function(synonyms) {
 				// console.log('|' + getRandomText() + '|');
 				// console.log('|' + synonyms + '|');
